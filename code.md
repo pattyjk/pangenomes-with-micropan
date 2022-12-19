@@ -1,10 +1,11 @@
+```
 #PanGenome with Micropan
 #starting with JGI annotated genomes, need just the ".faa" files (protein sequences)
 
 library(tidyverse)
 library(micropan)
 
-setwd("C:/Users/patty/OneDrive/Desktop/ALl_food_genomes/test")
+#setwd("C:/Users/patty/OneDrive/Desktop/ALl_food_genomes/test")
 
 #read in genome table
 #each genome needs to have GID in front of the genome name (its dumb and I spent a lot of time angry that I didn't know that - PJK 9/20/22)
@@ -14,7 +15,7 @@ gnm.tbl<-read.delim("genome_table.txt", header=T)
 dir.create("blast")
 
 #prep files for further analysis
-#this takes the name of the genome and adds them to ever sequences and then adds a sequence name to each (and to file name)
+#this takes the name of the genome and adds them to every sequence and then adds a sequence name to each (and to file name)
 #if calling JGI data, make sure to have a column that has the name of the JGI genome
 for(i in 1:nrow(gnm.tbl)){
   panPrep(file.path("C:/Users/patty/OneDrive/Desktop/ALl_food_genomes/test/protein_sequences/", str_c(gnm.tbl$JGI_ID[i], ".faa")),
